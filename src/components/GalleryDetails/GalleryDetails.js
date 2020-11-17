@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import "./gallerydetail.css"
 
 const GalleryDetails = () => {
     const [gallery, setGallery] = useState([]);
-    const nostalgia = "OURAPIORJSONHERE";
+    const nostalgia = "OUR-API-OR-JSON-HERE";
 
     useEffect(() => {
         fetch(nostalgia)
