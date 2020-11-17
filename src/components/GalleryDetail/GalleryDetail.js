@@ -26,8 +26,8 @@ const GalleryDetail = (props) => {
             <h2>Title: {detail.title}</h2>
             <p>Era/Time: {detail.eraTime}</p>
             <p>Caption: {detail.caption}</p>
-            <p>Submitted At: {detail.timestamps}</p>
-            <p>Submitted By: {detail.user}</p>
+            {/* <p>Submitted At: {detail.timestamps}</p>
+            <p>Submitted By: {detail.user}</p> */}
         </div>
     );
 };
