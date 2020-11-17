@@ -8,6 +8,7 @@ const App = () => {
         <div className="App">
             <Header />
             <main>
+                <Switch>
                 <Route path='/' exact component={GalleryDetails} /> 
 
                 <Route
@@ -16,6 +17,9 @@ const App = () => {
                         return <GalleryDetails match={routerProps.match} />
                     }}
                 />
+
+                <Route path="/submit" exact component={Submit} />
+                </Switch>
             </main>
         </div>
     );
