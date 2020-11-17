@@ -1,7 +1,8 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import GalleryDetails from "../GalleryDetails/GalleryDetails"
+import Submit from "../Submit/Submit"
 
 const App = () => {
     return (
