@@ -22,10 +22,11 @@ const GalleryDetail = (props) => {
 
     return (
         <div className="info">
+            <img src={detail.image} alt="" />
             <h2>Title: {detail.title}</h2>
             <p>Era/Time: {detail.era}</p>
             <p>Caption: {detail.caption}</p>
-            <p>Submitted At: {detail.timestamp}</p>
+            <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p>
         </div>
     );
