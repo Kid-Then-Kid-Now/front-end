@@ -23,7 +23,7 @@ const GalleryDetail = (props) => {
 	}, [props.match.params.id]);
 
 	return (
-		<div className='info'>
+		<div className='info' key= {detail.id}>
 			<img src={detail.imgUrl} alt='' />
 			<h2>Title: {detail.title}</h2>
 			<p>Era/Time: {detail.eraTime}</p>
