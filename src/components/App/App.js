@@ -13,7 +13,7 @@ const App = () => {
 				<Switch>
 					<Route path='/' exact component={GalleryTitles} />
 					<Route
-						path='gallery/:id'
+						path='/:id'
 						render={(routerProps) => {
 							return <GalleryDetail match={routerProps.match} />;
 						}}

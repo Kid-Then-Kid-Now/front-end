@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import './details.css';
 
-const galleryInfo = 'http://localhost:5000/galleries';
+const galleryInfo = `http://localhost:5000/galleries/`;
 
 const GalleryDetail = (props) => {
 	const [detail, setDetail] = useState('');
@@ -23,7 +23,7 @@ const GalleryDetail = (props) => {
 	}, [props.match.params.id]);
 
 	return (
-		<div className='info' key= {detail.id}>
+		<div className='info' key={detail.id}>
 			<img src={detail.imgUrl} alt='' />
 			<h2>Title: {detail.title}</h2>
 			<p>Era/Time: {detail.eraTime}</p>

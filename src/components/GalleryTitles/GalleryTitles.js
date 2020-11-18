@@ -11,8 +11,8 @@ const GalleryDetails = () => {
 	useEffect(() => {
 		fetch(nostalgia)
 			.then((res) => res.json())
-			.then((res) => {
-				setGallery(res);
+			.then((json) => {
+				setGallery(json);
 			})
 			.catch((err) => {
 				return 'There appears to be a file with Details.js. Is the API or JSON connected properly?';
@@ -21,10 +21,10 @@ const GalleryDetails = () => {
 
 	return (
 		<div>
-			{gallery.map((detail) => {
+			{gallery.map((gallery) => {
 				return (
-					<Link to={`/gallery/${detail.id}`}>
-						<div className='card'>{detail?.title}</div>
+					<Link to={`/${gallery.id}`}>
+						<div className='card'>{gallery.title}</div>
 					</Link>
 				);
 			})}
