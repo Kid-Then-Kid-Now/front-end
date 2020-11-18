@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './gallerydetail.css';
+import Submit from '../Submit/Submit'
 
 const GalleryDetails = () => {
 	const [gallery, setGallery] = useState([]);
@@ -28,6 +29,7 @@ const GalleryDetails = () => {
 					</Link>
 				);
 			})}
+			<Submit/>
 		</div>
 	);
 };

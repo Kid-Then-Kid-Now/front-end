@@ -5,10 +5,10 @@ import './details.css';
 
 const galleryInfo = `http://localhost:5000/galleries/`;
 
-const GalleryDetail = (props) => {
+const GalleryDetail = ({ match }) => {
 	const [detail, setDetail] = useState('');
 	useEffect(() => {
-		const url = `${galleryInfo}${props.match.params.id}`;
+		const url = `${galleryInfo}${match.params.id}`;
 
 		fetch(url)
 			.then((res) => res.json())
@@ -20,7 +20,7 @@ const GalleryDetail = (props) => {
 					'There appears to be a problem with GalleryDetail.js. Is the file properly receiving the back-end information and correct routes?'
 				);
 			});
-	}, [props.match.params.id]);
+	}, [match.params.id]);
 
 	return (
 		<div className='info' key={detail.id}>
