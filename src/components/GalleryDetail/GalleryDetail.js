@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import './details.css';
 
-const galleryInfo = `http://localhost:5000/galleries/`;
+const galleryInfo = `http://localhost:5000/api/galleries/`;
 
 const GalleryDetail = ({ match }) => {
 	const [detail, setDetail] = useState('');
@@ -20,10 +20,10 @@ const GalleryDetail = ({ match }) => {
 					'There appears to be a problem with GalleryDetail.js. Is the file properly receiving the back-end information and correct routes?'
 				);
 			});
-	}, [match.params.id]);
+	}, []);
 
 	return (
-		<div className='info' key={detail.id}>
+		<div className='info'>
 			<img src={detail.imgUrl} alt='' />
 			<h2>Title: {detail.title}</h2>
 			<p>Era/Time: {detail.eraTime}</p>

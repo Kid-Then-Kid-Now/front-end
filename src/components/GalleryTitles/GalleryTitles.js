@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './gallerydetail.css';
-import Submit from '../Submit/Submit'
+import Submit from '../Submit/Submit';
 
-const GalleryDetails = () => {
+const GalleryTitles = () => {
 	const [gallery, setGallery] = useState([]);
-	const nostalgia = 'http://localhost:5000/api/gallerytitles';
+	const nostalgia = 'http://localhost:5000/api/galleries';
 
 	useEffect(() => {
 		fetch(nostalgia)
@@ -18,20 +18,19 @@ const GalleryDetails = () => {
 			.catch((err) => {
 				return 'There appears to be a file with Details.js. Is the API or JSON connected properly?';
 			});
-	});
+	}, []);
 
 	return (
 		<div>
 			{gallery.map((gallery) => {
 				return (
-					<Link to={`/${gallery.id}`}>
+					<Link to={`/${gallery._id}`} key={gallery._id}>
 						<div className='card'>{gallery.title}</div>
 					</Link>
 				);
 			})}
-			<Submit/>
 		</div>
 	);
 };
 
-export default GalleryDetails;
+export default GalleryTitles;

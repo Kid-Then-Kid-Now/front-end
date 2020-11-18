@@ -1,43 +1,79 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
-const Submit = () => {
+const Submit = (props) => {
 	const [gallery, setGallery] = useState({
 		title: '',
 		imgUrl: '',
 		caption: '',
 		eraTime: '',
 	});
+	// const [redirect, setRedirect] = useState(false);
+	const [newId, setNewId] = useState(null);
+
+	const handleChange = (event) => {
+		event.persist();
+		setGallery({ ...gallery, [event.target.name]: event.target.value });
+	};
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const url = `http://localhost:5000/api/galleries/`;
+
+		axios
+			.post(url, gallery)
+			.then((res) => {
+				setNewId(res.data._id);
+				console.log(res);
+			})
+			// .then((res) => setRedirect(true));
+	};
+	// axios
+	// 	.post('/user', {
+	// 		firstName: 'Fred',
+	// 		lastName: 'Flintstone',
+	// 	})
+	// 	.then(function (response) {
+	// 		console.log(response);
+	// 	})
+	// 	.catch(function (error) {
+	// 		console.log(error);
+	// 	});
+	if (newId) {
+		return <Redirect to={`/${newId}`} />;
+	}
 	return (
 		<div>
-			<form>
-				<label for='title'>Title:</label>
+			<form onSubmit={handleSubmit} className='submit-form'>
+				<label htmlFor='title'>Title:</label>
 				<input
 					onChange={handleChange}
-					title='title'
+					name='title'
 					id='title'
 					value={gallery.title}
 					placeholder='Title'
 				/>
-				<label for='imgUrl'>Image URL:</label>
+				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
-					title='imgUrl'
+					name='imgUrl'
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
 				/>
-				<label for='caption'>Caption:</label>
+				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
-					title='caption'
+					name='caption'
 					id='caption'
 					value={gallery.caption}
 					placeholder='Caption'
 				/>
-				<label for='eraTime'>Image URL:</label>
+				<label htmlFor='eraTime'>Era/Time:</label>
 				<input
 					onChange={handleChange}
-					title='eraTime'
+					name='eraTime'
 					id='eraTime'
 					value={gallery.eraTime}
 					placeholder='Era/Time'

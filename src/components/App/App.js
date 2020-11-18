@@ -5,20 +5,21 @@ import GalleryTitles from '../GalleryTitles/GalleryTitles';
 import Submit from '../Submit/Submit';
 import GalleryDetail from '../GalleryDetail/GalleryDetail';
 
-const App = () => {
+const App = (props) => {
 	return (
 		<div className='App'>
 			<Header />
 			<main>
 				<Switch>
 					<Route path='/' exact component={GalleryTitles} />
+					<Route path='/submit' exact component={Submit} />
+					
 					<Route
 						path='/:id'
 						render={(routerProps) => {
 							return <GalleryDetail match={routerProps.match} />;
 						}}
 					/>
-					<Route path='/submit' exact component={Submit} />
 				</Switch>
 			</main>
 		</div>
