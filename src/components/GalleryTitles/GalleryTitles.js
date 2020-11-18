@@ -6,7 +6,7 @@ import "./gallerydetail.css"
 
 const GalleryDetails = () => {
     const [gallery, setGallery] = useState([]);
-    const nostalgia = "OUR-API-OR-JSON-HERE";
+    const nostalgia = "http://localhost:5000/api/gallerytitles";
 
     useEffect(() => {
         fetch(nostalgia)

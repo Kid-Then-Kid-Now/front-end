@@ -1,29 +1,29 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
-import GalleryDetails from "../GalleryDetails/GalleryDetails"
-import Submit from "../Submit/Submit"
+import GalleryTitles from '../GalleryTitles/GalleryTitles';
+import Submit from '../Submit/Submit';
 
 const App = () => {
-    return (
-        <div className="App">
-            <Header />
-            <main>
-                <Switch>
-                <Route path='/' exact component={GalleryDetails} /> 
+	return (
+		<div className='App'>
+			<Header />
+			<main>
+				<Switch>
+					<Route path='/' exact component={GalleryTitles} />
 
-                <Route
-                    path="gallery/:id"
-                    render={(routerProps) => {
-                        return <GalleryDetails match={routerProps.match} />
-                    }}
-                />
+					<Route
+						path='gallery/:id'
+						render={(routerProps) => {
+							return <GalleryTitles match={routerProps.match} />;
+						}}
+					/>
 
-                <Route path="/submit" exact component={Submit} />
-                </Switch>
-            </main>
-        </div>
-    );
+					<Route path='/submit' exact component={Submit} />
+				</Switch>
+			</main>
+		</div>
+	);
 };
 
 export default App;
