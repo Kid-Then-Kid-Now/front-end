@@ -5,7 +5,7 @@ import './details.css';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router-dom';
 
-const galleryInfo = `http://localhost:5000/api/galleries/`;
+const galleryInfo = `https://all-the-feels-back-end.herokuapp.com/api/galleries/`;
 
 const GalleryDetail = ({ match }) => {
 	const history = useHistory();
@@ -21,15 +21,13 @@ const GalleryDetail = ({ match }) => {
 				setGallery(res);
 			})
 			.catch((err) => {
-				console.log(
-					'There appears to be a problem with GalleryDetail.js. Is the file properly receiving the back-end information and correct routes?'
-				);
+				console.error(err);
 			});
 	}, [match.params.id]);
 
 	// Delete a Submission
 	const handleDelete = (event) => {
-		const url = `http://localhost:5000/api/galleries/${match.params.id}`;
+		const url = `${galleryInfo}${match.params.id}`;
 
 		axios
 			.delete(url)
@@ -38,7 +36,7 @@ const GalleryDetail = ({ match }) => {
 				history.push('/');
 			})
 			.catch((err) => {
-				console.log(err);
+				console.error(err);
 			});
 	};
 
@@ -48,11 +46,10 @@ const GalleryDetail = ({ match }) => {
 	const handleSubmit = (event) => {
 		// event.preventDefault();
 		// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it.
-		const url = `http://localhost:5000/api/galleries/${match.params.id}`;
+		const url = `${galleryInfo}${match.params.id}`;
 
 		axios.put(url, detail).then((res) => {
 			setNewId(res.data._id);
-			// console.log(res);
 		});
 	};
 
