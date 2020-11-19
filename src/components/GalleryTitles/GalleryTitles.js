@@ -7,7 +7,8 @@ import Submit from '../Submit/Submit';
 
 const GalleryTitles = () => {
 	const [gallery, setGallery] = useState([]);
-	const nostalgia = 'http://localhost:5000/api/galleries';
+	const nostalgia =
+		'https://all-the-feels-back-end.herokuapp.com/api/galleries';
 
 	useEffect(() => {
 		fetch(nostalgia)
@@ -21,13 +22,13 @@ const GalleryTitles = () => {
 	}, []);
 
 	return (
-		<div className="holder">
+		<div className='holder'>
 			{gallery.map((gallery) => {
 				return (
 					<Link to={`/${gallery._id}`} key={gallery._id}>
-						<div className='card'><img src={gallery.imgUrl} alt="{gallery.title}"/>
-						<div className="card-name">
-						{gallery.title}</div>
+						<div className='card'>
+							<img src={gallery.imgUrl} alt='{gallery.title}' />
+							<div className='card-name'>{gallery.title}</div>
 						</div>
 					</Link>
 				);
