@@ -49,7 +49,8 @@ const handleDelete = (event) => {
 const [newId, setNewId] = useState(null);
 
 const handleSubmit = (event) => {
-	event.preventDefault();
+	// event.preventDefault();
+	// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it. 
 	const url = `http://localhost:5000/api/galleries/${match.params.id}`;
 
 	axios.put(url, gallery).then((res) => {
@@ -77,9 +78,15 @@ const handleChange = (event) => {
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
 
-			<button onClick={handleDelete}>Delete Submission</button>
-			
-			<form onChange={handleSubmit} className='update-form'>
+			<button class='pretty-button' onClick={handleDelete}>
+				Delete Submission
+			</button>
+
+
+			{/* Form to update a submission  */}
+			<form onSubmit={handleSubmit} className='update-form'>
+				Do you need to update your submission?
+				<br />
 				<label htmlFor='title'>Title:</label>
 				<input
 					onChange={handleChange}
@@ -87,7 +94,8 @@ const handleChange = (event) => {
 					id='title'
 					value={gallery.title}
 					placeholder='Title'
-				/>
+				/>{' '}
+				<br />
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
@@ -95,7 +103,8 @@ const handleChange = (event) => {
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
-				/>
+				/>{' '}
+				<br />
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
@@ -103,7 +112,8 @@ const handleChange = (event) => {
 					id='caption'
 					value={gallery.caption}
 					placeholder='Caption'
-				/>
+				/>{' '}
+				<br />
 				<label htmlFor='eraTime'>Era/Time:</label>
 				<input
 					onChange={handleChange}
@@ -112,7 +122,10 @@ const handleChange = (event) => {
 					value={gallery.eraTime}
 					placeholder='Era/Time'
 				/>
-				<button onChange={handleSubmit} type="submit">Update Post</button>
+				<br />
+				<button class='pretty-button' onSubmit={handleSubmit} type='submit'>
+					Update Post
+				</button>
 			</form>
 		</div>
 	);

@@ -1,10 +1,29 @@
+.holder {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    grid-auto-rows: minmax(330px, auto);
+    grid-gap: 10px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
 .card {
     width: 320px;
     height: 320px;
     overflow: hidden;
+    border: 1px solid #763C66;
 }
 
-img {
+.card img {
     max-width: 300px;
     max-height: 300px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.card-name {
+    background-color: #C8AEC1;
+    text-align: center;
+    bottom: 5px;
 }

@@ -21,11 +21,14 @@ const GalleryTitles = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="holder">
 			{gallery.map((gallery) => {
 				return (
 					<Link to={`/${gallery._id}`} key={gallery._id}>
-						<div className='card'><img src={gallery.imgUrl} alt="{gallery.title}"/><br />{gallery.title}</div>
+						<div className='card'><img src={gallery.imgUrl} alt="{gallery.title}"/>
+						<div className="card-name">
+						{gallery.title}</div>
+						</div>
 					</Link>
 				);
 			})}
