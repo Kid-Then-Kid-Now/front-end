@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './gallerydetail.css';
+import './titles.css';
 import Submit from '../Submit/Submit';
 
 const GalleryTitles = () => {
@@ -21,11 +21,14 @@ const GalleryTitles = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className="holder">
 			{gallery.map((gallery) => {
 				return (
 					<Link to={`/${gallery._id}`} key={gallery._id}>
-						<div className='card'>{gallery.title}</div>
+						<div className='card'><img src={gallery.imgUrl} alt="{gallery.title}"/>
+						<div className="card-name">
+						{gallery.title}</div>
+						</div>
 					</Link>
 				);
 			})}
