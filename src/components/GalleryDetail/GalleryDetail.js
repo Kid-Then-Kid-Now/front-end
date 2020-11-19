@@ -2,19 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import './details.css';
-import axios from "axios"
-import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import { Redirect, useHistory } from 'react-router-dom';
 
 const galleryInfo = `http://localhost:5000/api/galleries/`;
 
 const GalleryDetail = ({ match }) => {
+	const history = useHistory();
 	const [detail, setDetail] = useState('');
-		const [gallery, setGallery] = useState({
-			title: '',
-			imgUrl: '',
-			caption: '',
-			eraTime: ''
-		});
+	const [gallery, setGallery] = useState('');
 	useEffect(() => {
 		const url = `${galleryInfo}${match.params.id}`;
 
@@ -22,6 +18,7 @@ const GalleryDetail = ({ match }) => {
 			.then((res) => res.json())
 			.then((res) => {
 				setDetail(res);
+				setGallery(res);
 			})
 			.catch((err) => {
 				console.log(
@@ -30,58 +27,57 @@ const GalleryDetail = ({ match }) => {
 			});
 	}, [match.params.id]);
 
+	// Delete a Submission
+	const handleDelete = (event) => {
+		const url = `http://localhost:5000/api/galleries/${match.params.id}`;
 
-// Delete a Submission
-const handleDelete = (event) => {
-	const url = `http://localhost:5000/api/galleries/${match.params.id}`;
-
-	axios
-	.delete(url)
-		.then(res => {
-			console.log(res)
-		})
-		.catch((err) => {
-			console.log(err)
-		})
+		axios
+			.delete(url)
+			.then((res) => {
+				console.log(res);
+				history.push('/');
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 	};
 
-// // Update A submission
-const [newId, setNewId] = useState(null);
+	// // Update A submission
+	const [newId, setNewId] = useState(null);
 
-const handleSubmit = (event) => {
-	// event.preventDefault();
-	// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it. 
-	const url = `http://localhost:5000/api/galleries/${match.params.id}`;
+	const handleSubmit = (event) => {
+		// event.preventDefault();
+		// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it.
+		const url = `http://localhost:5000/api/galleries/${match.params.id}`;
 
-	axios.put(url, gallery).then((res) => {
-		setNewId(res.data._id);
-		// console.log(res);
-	});
-};
+		axios.put(url, detail).then((res) => {
+			setNewId(res.data._id);
+			// console.log(res);
+		});
+	};
 
 	if (newId) {
 		return <Redirect to={`/${newId}`} />;
 	}
 
-const handleChange = (event) => {
+	const handleChange = (event) => {
 		event.persist();
-		setGallery({ ...gallery, [event.target.name]: event.target.value });
-}
-
-// Display details on current submission
+		setDetail({ ...detail, [event.target.name]: event.target.value });
+	};
+	console.log(detail);
+	// Display details on current submission
 	return (
 		<div className='info'>
-			<img src={detail.imgUrl} alt='' />
-			<h2>Title: {detail.title}</h2>
-			<p>Era/Time: {detail.eraTime}</p>
-			<p>Caption: {detail.caption}</p>
+			<img src={gallery.imgUrl} alt='' />
+			<h2>Title: {gallery.title}</h2>
+			<p>Era/Time: {gallery.eraTime}</p>
+			<p>Caption: {gallery.caption}</p>
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
 
 			<button className='pretty-button' onClick={handleDelete}>
 				Delete Submission
 			</button>
-
 
 			{/* Form to update a submission  */}
 			<form onSubmit={handleSubmit} className='update-form'>
@@ -92,7 +88,7 @@ const handleChange = (event) => {
 					onChange={handleChange}
 					name='title'
 					id='title'
-					value={gallery.title}
+					value={detail.title}
 					placeholder='Title'
 				/>{' '}
 				<br />
@@ -101,7 +97,7 @@ const handleChange = (event) => {
 					onChange={handleChange}
 					name='imgUrl'
 					id='imgUrl'
-					value={gallery.imgUrl}
+					value={detail.imgUrl}
 					placeholder='Image URL'
 				/>{' '}
 				<br />
@@ -110,7 +106,7 @@ const handleChange = (event) => {
 					onChange={handleChange}
 					name='caption'
 					id='caption'
-					value={gallery.caption}
+					value={detail.caption}
 					placeholder='Caption'
 				/>{' '}
 				<br />
@@ -119,7 +115,7 @@ const handleChange = (event) => {
 					onChange={handleChange}
 					name='eraTime'
 					id='eraTime'
-					value={gallery.eraTime}
+					value={detail.eraTime}
 					placeholder='Era/Time'
 				/>
 				<br />
