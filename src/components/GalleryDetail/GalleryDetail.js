@@ -32,7 +32,6 @@ const GalleryDetail = ({ match }) => {
 		axios
 			.delete(url)
 			.then((res) => {
-				console.log(res);
 				history.push('/');
 			})
 			.catch((err) => {
@@ -61,7 +60,6 @@ const GalleryDetail = ({ match }) => {
 		event.persist();
 		setDetail({ ...detail, [event.target.name]: event.target.value });
 	};
-	console.log(detail);
 	// Display details on current submission
 	return (
 		<div className='info'>
