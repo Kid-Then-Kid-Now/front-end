@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import './details.css';
+import axios from "axios"
 
 const galleryInfo = `http://localhost:5000/api/galleries/`;
 
@@ -22,6 +23,24 @@ const GalleryDetail = ({ match }) => {
 			});
 	}, []);
 
+{/* <form update={handleSubmit} className="update-form">
+
+</form> */}
+
+const handleDelete = (event) => {
+	const url = `http://localhost:5000/api/galleries/${match.params.id}`;
+
+	axios
+	.delete(url)
+		.then(res => {
+			console.log(res)
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+	};
+
+
 	return (
 		<div className='info'>
 			<img src={detail.imgUrl} alt='' />
@@ -30,6 +49,9 @@ const GalleryDetail = ({ match }) => {
 			<p>Caption: {detail.caption}</p>
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
+			
+			{/* <button onChange={update}>Update Post</button> */}
+			<button onClick={handleDelete}>Delete Submission</button>
 		</div>
 	);
 };
