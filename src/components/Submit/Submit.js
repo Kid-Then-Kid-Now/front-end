@@ -27,7 +27,6 @@ const Submit = (props) => {
 				setNewId(res.data._id);
 				console.log(res);
 			})
-			// .then((res) => setRedirect(true));
 	};
 	// axios
 	// 	.post('/user', {

@@ -23,10 +23,14 @@ const GalleryDetail = ({ match }) => {
 			});
 	}, []);
 
-{/* <form update={handleSubmit} className="update-form">
+// Update a Submission
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		const url = `http://localhost:5000/api/galleries/${match.params.id}`;
 
-</form> */}
 
+
+// Delete a Submission
 const handleDelete = (event) => {
 	const url = `http://localhost:5000/api/galleries/${match.params.id}`;
 
@@ -40,7 +44,7 @@ const handleDelete = (event) => {
 		})
 	};
 
-
+// Display details on current submission
 	return (
 		<div className='info'>
 			<img src={detail.imgUrl} alt='' />
@@ -49,9 +53,47 @@ const handleDelete = (event) => {
 			<p>Caption: {detail.caption}</p>
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
-			
-			{/* <button onChange={update}>Update Post</button> */}
+			<button onChange={update}>Update Post</button>
 			<button onClick={handleDelete}>Delete Submission</button>
+
+			<form update={handleSubmit} className='update-form'>
+				<label htmlFor='title'>Title:</label>
+				<input
+					update={handleSubmit}
+					name='title'
+					id='title'
+					value={detail.title}
+					placeholder='Title'
+				/>
+				<label htmlFor='imgUrl'>Image URL:</label>
+				<input
+					update={handleSubmit}
+					name='imgUrl'
+					id='imgUrl'
+					value={detail.imgUrl}
+					placeholder='Image URL'
+				/>
+				<label htmlFor='caption'>Caption:</label>
+				<input
+					update={handleSubmit}
+					name='caption'
+					id='caption'
+					value={detail.caption}
+					placeholder='Caption'
+				/>
+				<label htmlFor='eraTime'>Era/Time:</label>
+				<input
+					onChange={handleSubmit}
+					name='eraTime'
+					id='eraTime'
+					value={detail.eraTime}
+					placeholder='Era/Time'
+				/>
+				<button id='button' type='submit'>
+					Submit
+				</button>
+			</form>
+			;
 		</div>
 	);
 };
