@@ -1,0 +1,10 @@
+.card {
+    width: 320px;
+    height: 320px;
+    overflow: hidden;
+}
+
+img {
+    max-width: 300px;
+    max-height: 300px;
+}
