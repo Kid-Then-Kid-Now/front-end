@@ -79,7 +79,7 @@ const Submit = (props) => {
 					value={gallery.eraTime}
 					placeholder='Era/Time'
 				/> <br />
-				<button id='button' type='submit' class="pretty-button"> 
+				<button id='button' type='submit' className="pretty-button"> 
 					Submit
 				</button>
 			</form>

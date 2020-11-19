@@ -28,7 +28,7 @@ const GalleryDetail = ({ match }) => {
 					'There appears to be a problem with GalleryDetail.js. Is the file properly receiving the back-end information and correct routes?'
 				);
 			});
-	}, []);
+	}, [match.params.id]);
 
 
 // Delete a Submission
@@ -78,7 +78,7 @@ const handleChange = (event) => {
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
 
-			<button class='pretty-button' onClick={handleDelete}>
+			<button className='pretty-button' onClick={handleDelete}>
 				Delete Submission
 			</button>
 
@@ -123,7 +123,7 @@ const handleChange = (event) => {
 					placeholder='Era/Time'
 				/>
 				<br />
-				<button class='pretty-button' onSubmit={handleSubmit} type='submit'>
+				<button className='pretty-button' onSubmit={handleSubmit} type='submit'>
 					Update Post
 				</button>
 			</form>
