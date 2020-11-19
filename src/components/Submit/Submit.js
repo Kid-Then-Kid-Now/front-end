@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import "./submit.css"
 
 const Submit = (props) => {
 	const [gallery, setGallery] = useState({
@@ -43,7 +44,8 @@ const Submit = (props) => {
 		return <Redirect to={`/${newId}`} />;
 	}
 	return (
-		<div>
+		<div> 
+			<p>If you have something that was nostalgic to you when you were young(er), feel free to add it below! Let's keep it kid friendly, please.</p>
 			<form onSubmit={handleSubmit} className='submit-form'>
 				<label htmlFor='title'>Title:</label>
 				<input
@@ -52,7 +54,7 @@ const Submit = (props) => {
 					id='title'
 					value={gallery.title}
 					placeholder='Title'
-				/>
+				/> <br />
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
@@ -60,7 +62,7 @@ const Submit = (props) => {
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
-				/>
+				/> <br />
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
@@ -68,7 +70,7 @@ const Submit = (props) => {
 					id='caption'
 					value={gallery.caption}
 					placeholder='Caption'
-				/>
+				/> <br />
 				<label htmlFor='eraTime'>Era/Time:</label>
 				<input
 					onChange={handleChange}
@@ -76,8 +78,8 @@ const Submit = (props) => {
 					id='eraTime'
 					value={gallery.eraTime}
 					placeholder='Era/Time'
-				/>
-				<button id='button' type='submit'>
+				/> <br />
+				<button id='button' type='submit' className="pretty-button"> 
 					Submit
 				</button>
 			</form>
