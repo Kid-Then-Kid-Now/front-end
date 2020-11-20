@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Header from '../Header/Header';
-import GalleryTitles from '../GalleryTitles/GalleryTitles';
-import Submit from '../Submit/Submit';
-import GalleryDetail from '../GalleryDetail/GalleryDetail';
+import Header from '../components/Header/Header';
+import GalleryTitles from '../components/GalleryTitles/GalleryTitles';
+import Submit from '../components/Submit/Submit';
+import GalleryDetail from '../components/GalleryDetail/GalleryDetail';
 
 const App = (props) => {
 	return (
