@@ -10,15 +10,15 @@
 .card {
     width: 320px;
     height: 320px;
+    display: grid;
     overflow: hidden;
     border: 1px solid #763C66;
+    place-items: center;
 }
 
 .card img {
     max-width: 300px;
     max-height: 300px;
-    align-items: center;
-    justify-content: center;
     display: flex;
 }
 
