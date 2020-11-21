@@ -4,6 +4,9 @@ import Header from './components/Header/Header';
 import GalleryTitles from './components/GalleryTitles/GalleryTitles';
 import Submit from './components/Submit/Submit';
 import GalleryDetail from './components/GalleryDetail/GalleryDetail';
+import { Suspense, lazy } from 'react';
+
+// const GalleryTitles = lazy(() => import ("./components/GalleryTitles/GalleryTitles"))
 
 const App = (props) => {
 	return (
@@ -21,6 +24,9 @@ const App = (props) => {
 						}}
 					/>
 				</Switch>
+
+
+
 			</main>
 		</div>
 	);
