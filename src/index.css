@@ -13,13 +13,13 @@ code {
 }
 
 .pretty-button {
-    padding: 8px 18px;
-    background-color: #60234F;
-    width: 150px;
-    border: none;
-    outline: none;
-    border-radius: 3px;
+    background-color: #757575;
     color: #fff;
     margin-left: auto;
     margin-right: auto;
+    border: 6px inset;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin: .5rem;
+    padding: .5rem;
 }
