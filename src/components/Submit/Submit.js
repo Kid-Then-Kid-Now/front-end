@@ -49,12 +49,21 @@ const Submit = (props) => {
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
+					type="url"
 					name='imgUrl'
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
-				/>{' '}
+				/>{' '} 
 				<br />
+				{/* <label htmlFor="upload">Or Upload Image:</label>
+				<input 
+					onChange={handleChange}
+					type="file"
+					name="upload"
+					id="rrr"
+					value={gallery.imgUrl} />
+				<br /> */}
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
