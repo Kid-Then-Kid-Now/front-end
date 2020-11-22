@@ -43,17 +43,27 @@ const Submit = (props) => {
 					id='title'
 					value={gallery.title}
 					placeholder='Title'
-				/>{' '}
+				/>{' '} 
+				{/* What are these empty objects for? -points at line 46- */}
 				<br />
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
+					type="url"
 					name='imgUrl'
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
-				/>{' '}
+				/>{' '} 
 				<br />
+				{/* <label htmlFor="upload">Or Upload Image:</label>
+				<input 
+					onChange={handleChange}
+					type="file"
+					name="upload"
+					id="rrr"
+					value={gallery.imgUrl} />
+				<br /> An attempt at letting a user upload an image from their computer*/}
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
