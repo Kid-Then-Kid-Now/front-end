@@ -70,10 +70,6 @@ const GalleryDetail = ({ match }) => {
 			{/* <p>Submitted At: {detail.timestamps}</p>
             <p>Submitted By: {detail.user}</p> */}
 
-			<button className='pretty-button' onClick={handleDelete}>
-				Delete Submission
-			</button>
-
 			{/* Form to update a submission  */}
 			<form onSubmit={handleSubmit} className='update-form'>
 				Do you need to update your submission?
@@ -118,6 +114,11 @@ const GalleryDetail = ({ match }) => {
 					Update Post
 				</button>
 			</form>
+
+			<button className='pretty-button' onClick={handleDelete}>
+				Delete Submission
+			</button>
+			
 		</div>
 	);
 };
