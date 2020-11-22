@@ -43,7 +43,8 @@ const Submit = (props) => {
 					id='title'
 					value={gallery.title}
 					placeholder='Title'
-				/>{' '}
+				/>{' '} 
+				{/* What are these empty objects for? -points at line 46- */}
 				<br />
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
