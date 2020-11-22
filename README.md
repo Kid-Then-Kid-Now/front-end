@@ -36,11 +36,3 @@ This app will be able to submit old toys, games, candies, etc. from their childh
 - Add logo for app.
 
 - Allow user to lock their gallery until a specified date.
-
-## Models
-
-(will add later???)
-
-## Wireframes
-
-> ![image](https://media.git.generalassemb.ly/user/31428/files/6bb0d880-279e-11eb-8fbd-dde47e569883) > ![image](https://media.git.generalassemb.ly/user/31428/files/7c614e80-279e-11eb-92dd-3654ed99c164) > ![image](https://media.git.generalassemb.ly/user/31428/files/88e5a700-279e-11eb-9e48-78685625699d) > ![image](https://media.git.generalassemb.ly/user/31428/files/98fd8680-279e-11eb-8410-404864faa9fe) > ![image](https://media.git.generalassemb.ly/user/31428/files/a9156600-279e-11eb-8da3-5a4b18433a8a) > ![image](https://media.git.generalassemb.ly/user/31428/files/bb8f9f80-279e-11eb-8483-50efab5d6acb)
