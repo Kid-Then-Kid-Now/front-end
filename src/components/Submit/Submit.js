@@ -63,7 +63,7 @@ const Submit = (props) => {
 					name="upload"
 					id="rrr"
 					value={gallery.imgUrl} />
-				<br /> */}
+				<br /> An attempt at letting a user upload an image from their computer*/}
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}
