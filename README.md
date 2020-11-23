@@ -25,6 +25,7 @@ This app will be able to submit old toys, games, candies, etc. from their childh
 ## MVP Goals
 
 - Gallery of user submitted images, which leads to more detailed information about the submission upon being clicked on.
+
 - Submission form that has a field for an image, a title, a year, and description.
 
 ## Stretch Goals
@@ -36,3 +37,12 @@ This app will be able to submit old toys, games, candies, etc. from their childh
 - Add logo for app.
 
 - Allow user to lock their gallery until a specified date.
+
+## Contribution Guidelines
+- The application can be accessed at [All The Feels](https://all-the-feels-fe.herokuapp.com/)
+
+- If there is a bug with the app, please provide the following information when submitting a bug report.
+> - What you were attempting to do (add submission, update, etc.)
+> - Device used (PC, mobile device)
+> - Screenshots
+> - Steps to recreate the error

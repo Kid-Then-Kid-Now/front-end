@@ -64,11 +64,13 @@ const GalleryDetail = ({ match }) => {
 	return (
 		<div className='info'>
 			<img src={gallery.imgUrl} alt='' />
-			<h2>Title: {gallery.title}</h2>
-			<p>Era/Time: {gallery.eraTime}</p>
-			<p>Caption: {gallery.caption}</p>
-			{/* <p>Submitted At: {detail.timestamps}</p>
-            <p>Submitted By: {detail.user}</p> */}
+			<div className="stuff">
+				<h2>Title: {gallery.title}</h2>
+				<p>Era/Time: {gallery.eraTime}</p>
+				<p>Submitted By: {gallery.owner}</p>
+				<p>Caption: {gallery.caption}</p>
+			{/* <p>Submitted At: {gallery.timestamps}</p> */}
+			</div>
 
 			{/* Form to update a submission  */}
 			<form onSubmit={handleSubmit} className='update-form'>
@@ -86,7 +88,7 @@ const GalleryDetail = ({ match }) => {
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
-					type="url"
+					type='url'
 					name='imgUrl'
 					id='imgUrl'
 					value={detail.imgUrl}
@@ -119,7 +121,6 @@ const GalleryDetail = ({ match }) => {
 			<button className='pretty-button' onClick={handleDelete}>
 				Delete Submission
 			</button>
-			
 		</div>
 	);
 };
