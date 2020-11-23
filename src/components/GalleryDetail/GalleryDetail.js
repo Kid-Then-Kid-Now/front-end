@@ -86,6 +86,7 @@ const GalleryDetail = ({ match }) => {
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
+					type="url"
 					name='imgUrl'
 					id='imgUrl'
 					value={detail.imgUrl}

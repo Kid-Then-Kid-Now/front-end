@@ -18,7 +18,7 @@ const Login = () => {
 
     return (
         <div>
-            <p>Login info here I guess
+            <p>Login info here I guess</p>
                 <form className="login-form">
                     <label htmlFor="email">Email Address</label>
                     <input 
@@ -40,7 +40,6 @@ const Login = () => {
 				</button>
 
                 </form>
-            </p>
         </div>
     );
 };
