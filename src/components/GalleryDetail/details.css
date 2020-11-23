@@ -1,3 +1,10 @@
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #763C66;
+    place-items: center;
+}
+
 .info img {
     max-width: 600px;
     max-height: 600px;
