@@ -9,7 +9,8 @@ const Header = () => {
             <nav>
                 <Link to='/'>Home Page</Link> »
                 <Link to='/submit'>Create your own memory!</Link> »
-                <Link to="/login">Login</Link>
+                <Link to="/login">Login</Link> »
+                <Link to="/register">Register</Link>
             </nav>
         </div>
     );

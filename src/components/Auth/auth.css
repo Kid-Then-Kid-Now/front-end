@@ -1,0 +1,6 @@
+.auth-body {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #763C66;
+    place-items: center;
+}

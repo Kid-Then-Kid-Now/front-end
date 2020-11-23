@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./auth.css"
 
 const Login = () => {
     const signin = {
@@ -17,17 +18,17 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="auth-body">
             <p>Login info here I guess</p>
                 <form className="login-form">
-                    <label htmlFor="email">Email Address</label>
+                    <label htmlFor="email">Email Address: </label>
                     <input 
                         type="email"
                         name="email"
                         id="email"
                         placeholder="valid email address"/>
                     <br />
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password">Password: </label>
                     <input
                         type="password"
                         name="password"
