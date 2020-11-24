@@ -7,7 +7,7 @@ import GalleryDetail from './components/GalleryDetail/GalleryDetail';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 
-const App = (props) => {
+const App = () => {
 	const [token, setToken] = useState(null);
 	const [user, setUser] = useState('');
 	return (

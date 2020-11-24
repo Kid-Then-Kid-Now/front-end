@@ -15,12 +15,10 @@ const GalleryDetail = ({ match, token }) => {
 	useEffect(() => {
 		const url = `${galleryInfo}${match.params.id}`;
 		console.log(url);
-		fetch(url)
-			.then((res) => res.json())
+		axios(url)
 			.then((res) => {
-				console.log(res);
-				setDetail(res);
-				setGallery(res);
+				setDetail(res.data);
+				setGallery(res.data);
 			})
 			.catch((err) => {
 				console.error(err);
@@ -36,8 +34,7 @@ const GalleryDetail = ({ match, token }) => {
 			method: 'DELETE',
 			headers: headers,
 		})
-			// .delete(url, headers)
-			.then((res) => {
+			.then(() => {
 				history.push('/');
 			})
 			.catch((err) => {
@@ -46,30 +43,21 @@ const GalleryDetail = ({ match, token }) => {
 	};
 
 	// // Update A submission
-	const [newId, setNewId] = useState(null);
 
 	const handleSubmit = (event) => {
-		console.log(galleryInfo);
 		event.preventDefault();
 		// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it.
 		const url = `${galleryInfo}${match.params.id}`;
 		const headers = { Authorization: `Bearer ${token}` };
-		console.log(detail);
-		console.log(headers);
 		axios({
 			url: url,
 			method: 'PUT',
 			headers: headers,
 			data: detail,
-		}).then((detail) => {
-			setNewId(detail.id);
+		}).then(() => {
 			history.push('/');
 		});
 	};
-
-	// if (newId) {
-	// 	return <Redirect to={`/${newId}`} />;
-	// }
 
 	const handleChange = (event) => {
 		event.persist();
@@ -127,7 +115,7 @@ const GalleryDetail = ({ match, token }) => {
 					placeholder='Era/Time'
 				/>
 				<br />
-				<button className='pretty-button' onSubmit={handleSubmit} type='submit'>
+				<button className='pretty-button' type='submit'>
 					Update Post
 				</button>
 			</form>

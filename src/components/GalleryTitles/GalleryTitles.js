@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './titles.css';
-import Submit from '../Submit/Submit';
 import APIURL from '../../config';
 import axios from 'axios';
 
@@ -11,10 +10,9 @@ const GalleryTitles = ({ token }) => {
 	const [gallery, setGallery] = useState([]);
 	const nostalgia = `${APIURL}api/galleries`;
 	useEffect(() => {
-		fetch(nostalgia)
-			.then((res) => res.json())
-			.then((json) => {
-				setGallery(json);
+		axios(nostalgia)
+			.then((res) => {
+				setGallery(res.data);
 			})
 			.catch((err) => {
 				return 'There appears to be a file with Details.js. Is the API or JSON connected properly?';
