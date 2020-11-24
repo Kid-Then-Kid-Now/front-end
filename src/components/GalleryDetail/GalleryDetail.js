@@ -30,11 +30,11 @@ const GalleryDetail = ({ match, token }) => {
 	// Delete a Submission
 	const handleDelete = (event) => {
 		const url = `${galleryInfo}${match.params.id}`;
-		const headers = { "Authorization": `Bearer ${token}` };
+		const headers = { Authorization: `Bearer ${token}` };
 		axios({
-		url: url,
-		method:'DELETE',
-		headers: headers
+			url: url,
+			method: 'DELETE',
+			headers: headers,
 		})
 			// .delete(url, headers)
 			.then((res) => {
@@ -54,19 +54,22 @@ const GalleryDetail = ({ match, token }) => {
 		// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it.
 		const url = `${galleryInfo}${match.params.id}`;
 		const headers = { Authorization: `Bearer ${token}` };
+		console.log(detail);
+		console.log(headers);
 		axios({
 			url: url,
 			method: 'PUT',
-			headers: {
-				"Authorization": `Bearer ${token}`
-			},
+			headers: headers,
 			data: detail,
+		}).then((detail) => {
+			setNewId(detail.id);
+			history.push('/');
 		});
 	};
 
-	if (newId) {
-		return <Redirect to={`/${newId}`} />;
-	}
+	// if (newId) {
+	// 	return <Redirect to={`/${newId}`} />;
+	// }
 
 	const handleChange = (event) => {
 		event.persist();
@@ -75,11 +78,11 @@ const GalleryDetail = ({ match, token }) => {
 	// Display details on current submission
 	return (
 		<div className='info'>
-			<img src={detail.imgUrl} alt='' />
+			<img src={gallery.imgUrl} alt='' />
 			<div className='stuff'>
-				<h2>Title: {detail.title}</h2>
-				<p>Era/Time: {detail.eraTime}</p>
-				<p>Caption: {detail.caption}</p>
+				<h2>Title: {gallery.title}</h2>
+				<p>Era/Time: {gallery.eraTime}</p>
+				<p>Caption: {gallery.caption}</p>
 				{/* <p>Submitted At: {gallery.timestamps}</p> */}
 			</div>
 

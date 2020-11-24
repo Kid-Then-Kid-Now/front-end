@@ -11,14 +11,6 @@ const GalleryTitles = ({ token }) => {
 	const [gallery, setGallery] = useState([]);
 	const nostalgia = `${APIURL}api/galleries`;
 	useEffect(() => {
-		// axios({
-		// 	url: nostalgia,
-		// 	method: 'POST',
-		// 	headers: {
-		// 		email: token,
-		// 	},
-		// 	data: setGallery,
-		// });
 		fetch(nostalgia)
 			.then((res) => res.json())
 			.then((json) => {

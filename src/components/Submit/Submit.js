@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import './submit.css';
 import userEvent from '@testing-library/user-event';
+import APIURL from '../../config';
 
 const Submit = (props) => {
 	const [gallery, setGallery] = useState({
@@ -20,10 +21,18 @@ const Submit = (props) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const url = `https://all-the-feels-back-end.herokuapp.com/api/galleries`;
-		const headers = { "Authorization": `Bearer ${props.token}` };
-		props.setUser({...props.user, "owner": props.user.id })
-		axios.post(url, gallery, headers).then((res) => {
+		const url = `${APIURL}api/galleries`;
+		const headers = { Authorization: `Bearer ${props.token}` };
+		console.log(gallery);
+		console.log(headers);
+		props.setUser({ ...props.user, owner: props.user.id });
+		setGallery({...gallery, owner: props.user.id})
+		axios({
+			url: url,
+			method: 'POST',
+			headers: headers,
+			data: gallery,
+		}).then((res) => {
 			setNewId(res.data._id);
 		});
 	};
@@ -40,6 +49,7 @@ const Submit = (props) => {
 			<form onSubmit={handleSubmit} className='submit-form'>
 				<label htmlFor='title'>Title:</label>
 				<input
+					classname='form-component'
 					onChange={handleChange}
 					name='title'
 					id='title'

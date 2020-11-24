@@ -1,0 +1,11 @@
+.submit-form {
+	display: flex;
+	flex-wrap: wrap;
+	border: 1px solid #763c66;
+	place-items: center;
+	padding: 10px;
+}
+
+.form-component {
+	padding: 5px;
+}
