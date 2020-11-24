@@ -4,7 +4,7 @@ import './auth.css';
 import APIURL from '../../config';
 import { Redirect } from 'react-router-dom';
 
-const Login = ({ setToken }) => {
+const Login = ({ setToken, setUser }) => {
 	const signin = {
 		email: '',
 		password: '',
@@ -25,6 +25,7 @@ const Login = ({ setToken }) => {
 		}).then((res) => {
 			console.log(res);
 			setToken(res.data.token);
+			setUser(res.data.user);
 			setRedirect(true);
 		});
 	};

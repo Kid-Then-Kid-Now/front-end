@@ -9,25 +9,38 @@ import Register from './components/Auth/Register';
 
 const App = (props) => {
 	const [token, setToken] = useState(null);
+	const [user, setUser] = useState('');
 	return (
 		<div className='App'>
 			<Header token={token} />
 			<main>
 				<Switch>
-					<Route path='/' exact component={GalleryTitles} />
-					<Route path='/submit' exact component={Submit} />
+					<Route
+						path='/'
+						exact
+						render={() => {
+							return <GalleryTitles token={token} />;
+						}}
+					/>
+					<Route
+						path='/submit'
+						exact
+						render={() => (
+							<Submit token={token} user={user} setUser={setUser} />
+						)}
+					/>
 					<Route
 						path='/login'
 						exact
 						render={() => {
-							return <Login setToken={setToken} />;
+							return <Login setToken={setToken} setUser={setUser} />;
 						}}
 					/>
 					<Route path='/register' exact component={Register} />
 					<Route
 						path='/:id'
 						render={(routerProps) => {
-							return <GalleryDetail match={routerProps.match} />;
+							return <GalleryDetail token={token} match={routerProps.match} />;
 						}}
 					/>
 				</Switch>
