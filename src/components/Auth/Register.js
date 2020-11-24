@@ -11,7 +11,7 @@ const Register = () => {
 		password2: '',
 		errors: {},
 	};
-	const [passwordError, setPasswordError] = useState(false)
+	const [passwordError, setPasswordError] = useState(false);
 	const [redirect, setRedirect] = useState(false);
 	const [joinState, setJoinState] = useState(signup);
 	const handleChange = (event) => {
@@ -41,12 +41,12 @@ const Register = () => {
 	}
 
 	return (
-		<div className='auth-body'>
-			<p>
+		<div>
+			<p className='sign-up'>
 				By signing up for an account, you'll be able to manage your submissions.
 			</p>
-			<form onSubmit={handleSubmit}>
-				<div>
+			<form onSubmit={handleSubmit} className='auth-body'>
+				<div className='form-component'>
 					<label htmlFor='email'>Email: </label>
 					<input
 						required
@@ -56,7 +56,7 @@ const Register = () => {
 						onChange={handleChange}
 					/>
 				</div>
-				<div>
+				<div className='form-component'>
 					<label htmlFor='password'>Password: </label>
 					<input
 						required
@@ -66,7 +66,7 @@ const Register = () => {
 						value={joinState.password}
 					/>
 				</div>
-				<div>
+				<div className='form-component'>
 					<label htmlFor='password2'>Confirm Password: </label>
 					<input
 						required

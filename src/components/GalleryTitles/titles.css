@@ -1,30 +1,30 @@
 .holder {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 10px;
-    margin: 0 auto;
-    padding: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-gap: 10px;
+	margin: 0 auto;
+	padding: 10px;
 }
 
 .card {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    border: 1px solid #763C66;
-    place-items: center;
+	width: 250px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	overflow: hidden;
+	border: 1px solid #763c66;
+	place-items: center;
 }
 
 .card img {
-    max-width: 200px;
-    max-height: 200px;
+	max-width: 200px;
+	max-height: 200px;
 }
 
 .card-name {
-    background-color: #C8AEC1;
-    text-align: center;
-    bottom: 5px;
-    width: 100%;
+	background-color: #c8aec1;
+	text-align: center;
+	bottom: 5px;
+	width: 100%;
 }

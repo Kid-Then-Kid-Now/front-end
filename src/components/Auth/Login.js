@@ -33,30 +33,34 @@ const Login = ({ setToken }) => {
 	}
 
 	return (
-		<div className='auth-body'>
-			<p>Login info here I guess</p>
-			<form onSubmit={handleSubmit} className='login-form'>
+		<div>
+			<p className='login-message'>Please enter your credentials.</p>
+			<form onSubmit={handleSubmit} className='auth-body'>
 				<label htmlFor='email'>Email Address: </label>
-				<input
-					required
-					onChange={handleChange}
-					type='email'
-					name='email'
-					id='email'
-					placeholder='valid email address'
-					value={formState.email}
-				/>
+				<div className='form-component'>
+					<input
+						required
+						onChange={handleChange}
+						type='email'
+						name='email'
+						id='email'
+						placeholder='valid email address'
+						value={formState.email}
+					/>
+				</div>
 				<br />
 				<label htmlFor='password'>Password: </label>
-				<input
-					required
-					onChange={handleChange}
-					type='password'
-					name='password'
-					id='password'
-					placeholder='enter password'
-					value={formState.password}
-				/>
+				<div className='form-component'>
+					<input
+						required
+						onChange={handleChange}
+						type='password'
+						name='password'
+						id='password'
+						placeholder='enter password'
+						value={formState.password}
+					/>
+				</div>
 				<br />
 
 				<button id='button' type='submit' className='pretty-button'>
