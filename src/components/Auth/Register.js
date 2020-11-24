@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './auth.css';
 import Axios from 'axios';
 import APIURL from '../../config';
+import { Redirect } from 'react-router-dom';
 
 const Register = () => {
 	const signup = {
@@ -10,7 +11,8 @@ const Register = () => {
 		password2: '',
 		errors: {},
 	};
-
+	const [passwordError, setPasswordError] = useState(false)
+	const [redirect, setRedirect] = useState(false);
 	const [joinState, setJoinState] = useState(signup);
 	const handleChange = (event) => {
 		event.persist();
@@ -20,20 +22,23 @@ const Register = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		setJoinState(signup);
-		Axios({
-			url: `${APIURL}api/users/signup`,
-			method: 'POST',
-			data: joinState,
-		}).then((res) => {
-			console.log(res);
-		});
+		if (joinState.password === joinState.password2) {
+			Axios({
+				url: `${APIURL}api/users/signup`,
+				method: 'POST',
+				data: joinState,
+			}).then((res) => {
+				console.log(res);
+				setRedirect(true);
+			});
+		} else {
+			setPasswordError(true);
+		}
 	};
 
-	// const newUser = {
-	// 	email: signup.email,
-	// 	password: signup.password,
-	// 	password2: signup.password2,
-	// };
+	if (redirect) {
+		return <Redirect to='/login' />;
+	}
 
 	return (
 		<div className='auth-body'>
@@ -44,39 +49,34 @@ const Register = () => {
 				<div>
 					<label htmlFor='email'>Email: </label>
 					<input
+						required
 						type='email'
 						id='email'
 						value={joinState.email}
 						onChange={handleChange}
-						// value={signup.email}
-						//   error={errors.email}
 					/>
 				</div>
 				<div>
 					<label htmlFor='password'>Password: </label>
 					<input
+						required
 						onChange={handleChange}
 						type='password'
 						id='password'
 						value={joinState.password}
-						// onChange={handleSubmit}
-						// value={signup.password}
-						//   error={errors.password}
 					/>
 				</div>
 				<div>
 					<label htmlFor='password2'>Confirm Password: </label>
 					<input
+						required
 						onChange={handleChange}
 						type='password'
 						id='password2'
 						value={joinState.password2}
-						// onChange={handleSubmit}
-						// value={signup.password2}
-						//   error={errors.password2}
 					/>
 				</div>
-
+				{passwordError && <h2>Passwords must match!</h2>}
 				<button type='submit' className='pretty-button'>
 					Sign up
 				</button>

@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './titles.css';
 import Submit from '../Submit/Submit';
+import APIURL from '../../config';
 
 const GalleryTitles = () => {
 	const [gallery, setGallery] = useState([]);
-	const nostalgia =
-		'https://all-the-feels-back-end.herokuapp.com/api/galleries';
+	const nostalgia = `${APIURL}api/galleries`;
 
 	useEffect(() => {
 		fetch(nostalgia)

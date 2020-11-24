@@ -4,8 +4,9 @@ import React, { useState, useEffect } from 'react';
 import './details.css';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router-dom';
+import APIURL from '../../config';
 
-const galleryInfo = `https://all-the-feels-back-end.herokuapp.com/api/galleries/`;
+const galleryInfo = `${APIURL}api/galleries/`;
 
 const GalleryDetail = ({ match }) => {
 	const history = useHistory();
@@ -13,10 +14,11 @@ const GalleryDetail = ({ match }) => {
 	const [gallery, setGallery] = useState('');
 	useEffect(() => {
 		const url = `${galleryInfo}${match.params.id}`;
-
+		console.log(url);
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
+				console.log(res);
 				setDetail(res);
 				setGallery(res);
 			})
@@ -64,12 +66,11 @@ const GalleryDetail = ({ match }) => {
 	return (
 		<div className='info'>
 			<img src={gallery.imgUrl} alt='' />
-			<div className="stuff">
+			<div className='stuff'>
 				<h2>Title: {gallery.title}</h2>
 				<p>Era/Time: {gallery.eraTime}</p>
-				<p>Submitted By: {gallery.owner}</p>
 				<p>Caption: {gallery.caption}</p>
-			{/* <p>Submitted At: {gallery.timestamps}</p> */}
+				{/* <p>Submitted At: {gallery.timestamps}</p> */}
 			</div>
 
 			{/* Form to update a submission  */}
