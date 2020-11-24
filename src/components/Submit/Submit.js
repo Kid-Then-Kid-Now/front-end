@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import './submit.css';
+import userEvent from '@testing-library/user-event';
 
 const Submit = (props) => {
 	const [gallery, setGallery] = useState({
@@ -19,15 +20,16 @@ const Submit = (props) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const url = `https://all-the-feels-back-end.herokuapp.com/api/galleries/`;
-
-		axios.post(url, gallery).then((res) => {
+		const url = `https://all-the-feels-back-end.herokuapp.com/api/galleries`;
+		const headers = { "Authorization": `Bearer ${props.token}` };
+		props.setUser({...props.user, "owner": props.user.id })
+		axios.post(url, gallery, headers).then((res) => {
 			setNewId(res.data._id);
 		});
 	};
 
 	if (newId) {
-		return <Redirect to={`/${newId}`} />;
+		return <Redirect to={`/`} />;
 	}
 	return (
 		<div>
@@ -44,16 +46,26 @@ const Submit = (props) => {
 					value={gallery.title}
 					placeholder='Title'
 				/>{' '}
+				{/* What are these empty objects for? -points at line 46- */}
 				<br />
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
+					type='url'
 					name='imgUrl'
 					id='imgUrl'
 					value={gallery.imgUrl}
 					placeholder='Image URL'
 				/>{' '}
 				<br />
+				{/* <label htmlFor="upload">Or Upload Image:</label>
+				<input 
+					onChange={handleChange}
+					type="file"
+					name="upload"
+					id="rrr"
+					value={gallery.imgUrl} />
+				<br /> An attempt at letting a user upload an image from their computer*/}
 				<label htmlFor='caption'>Caption:</label>
 				<input
 					onChange={handleChange}

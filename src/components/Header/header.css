@@ -1,5 +1,6 @@
 .header {
     background-color: #6b5877;
+    text-align: center;
 }
 
 h1 {
@@ -8,4 +9,5 @@ h1 {
 
 .header a {
     color: #fff;
+    padding-left: 10px;
 }
