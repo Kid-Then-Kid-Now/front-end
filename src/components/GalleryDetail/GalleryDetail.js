@@ -4,19 +4,21 @@ import React, { useState, useEffect } from 'react';
 import './details.css';
 import axios from 'axios';
 import { Redirect, useHistory } from 'react-router-dom';
+import APIURL from '../../config';
 
-const galleryInfo = `https://all-the-feels-back-end.herokuapp.com/api/galleries/`;
+const galleryInfo = `${APIURL}api/galleries/`;
 
-const GalleryDetail = ({ match }) => {
+const GalleryDetail = ({ match, token }) => {
 	const history = useHistory();
 	const [detail, setDetail] = useState('');
 	const [gallery, setGallery] = useState('');
 	useEffect(() => {
 		const url = `${galleryInfo}${match.params.id}`;
-
+		console.log(url);
 		fetch(url)
 			.then((res) => res.json())
 			.then((res) => {
+				console.log(res);
 				setDetail(res);
 				setGallery(res);
 			})
@@ -28,9 +30,13 @@ const GalleryDetail = ({ match }) => {
 	// Delete a Submission
 	const handleDelete = (event) => {
 		const url = `${galleryInfo}${match.params.id}`;
-
-		axios
-			.delete(url)
+		const headers = { "Authorization": `Bearer ${token}` };
+		axios({
+		url: url,
+		method:'DELETE',
+		headers: headers
+		})
+			// .delete(url, headers)
 			.then((res) => {
 				history.push('/');
 			})
@@ -43,12 +49,18 @@ const GalleryDetail = ({ match }) => {
 	const [newId, setNewId] = useState(null);
 
 	const handleSubmit = (event) => {
-		// event.preventDefault();
+		console.log(galleryInfo);
+		event.preventDefault();
 		// // Disabling default behavior made the detail page turn into a blank page upon updating a submission. If there's a better way to fix this have at it.
 		const url = `${galleryInfo}${match.params.id}`;
-
-		axios.put(url, detail).then((res) => {
-			setNewId(res.data._id);
+		const headers = { Authorization: `Bearer ${token}` };
+		axios({
+			url: url,
+			method: 'PUT',
+			headers: {
+				"Authorization": `Bearer ${token}`
+			},
+			data: detail,
 		});
 	};
 
@@ -63,12 +75,13 @@ const GalleryDetail = ({ match }) => {
 	// Display details on current submission
 	return (
 		<div className='info'>
-			<img src={gallery.imgUrl} alt='' />
-			<h2>Title: {gallery.title}</h2>
-			<p>Era/Time: {gallery.eraTime}</p>
-			<p>Caption: {gallery.caption}</p>
-			{/* <p>Submitted At: {detail.timestamps}</p>
-            <p>Submitted By: {detail.user}</p> */}
+			<img src={detail.imgUrl} alt='' />
+			<div className='stuff'>
+				<h2>Title: {detail.title}</h2>
+				<p>Era/Time: {detail.eraTime}</p>
+				<p>Caption: {detail.caption}</p>
+				{/* <p>Submitted At: {gallery.timestamps}</p> */}
+			</div>
 
 			{/* Form to update a submission  */}
 			<form onSubmit={handleSubmit} className='update-form'>
@@ -86,7 +99,7 @@ const GalleryDetail = ({ match }) => {
 				<label htmlFor='imgUrl'>Image URL:</label>
 				<input
 					onChange={handleChange}
-					type="url"
+					type='url'
 					name='imgUrl'
 					id='imgUrl'
 					value={detail.imgUrl}
@@ -119,7 +132,6 @@ const GalleryDetail = ({ match }) => {
 			<button className='pretty-button' onClick={handleDelete}>
 				Delete Submission
 			</button>
-			
 		</div>
 	);
 };

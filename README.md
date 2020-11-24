@@ -1,38 +1,21 @@
 # All The Feels
 
-This app will be able to submit old toys, games, candies, etc. from their childhood. Anyone who uses the app will also be able to browse other user submissions.
-
-## Scrum Master
-
-- Shane
-
-## Group Members
-
-- Ash, De'Alsha, Nickos, Shane
+Meant to be a virtual time capsule, users of this app will be able to submit old toys, games, candies, etc. from their childhood. Anyone who uses the app will also be able to browse other user submissions.
 
 ## Technologies Used
 
 - All the Feels was created with React JS for the front end of the application, and utilizes Node, Express, and Mongoose for the back end to create an API and serve information to the application.
 
-## User stories
+## Installation Instructions 
+- Create a new folder on your computer with `mkdir all-the-Feels`.
+- Clone both the [Front](https://github.com/Kid-Then-Kid-Now/front-end) and [Back](https://github.com/Kid-Then-Kid-Now/back-end) ends into this directory.
+- Inside the folder of each repository, run `npm install`. 
 
-- As a nostalgia critic, I want to be able to see a gallery of images submitted by other nostalgia critics.
+## Contribution Guidelines
+- The application can be accessed at [All The Feels](https://all-the-feels-fe.herokuapp.com/)
 
-- As a nostalgia critic, I want to be able to submit information about my own item.
-
-- As a nostalgia critic, I want to see detailed descriptions of each item that was submitted.
-
-## MVP Goals
-
-- Gallery of user submitted images, which leads to more detailed information about the submission upon being clicked on.
-- Submission form that has a field for an image, a title, a year, and description.
-
-## Stretch Goals
-
-- Sort submissions by year.
-
-- Comments section for other users to add thoughts or images of their own product of the same item.
-
-- Add logo for app.
-
-- Allow user to lock their gallery until a specified date.
+- If there is a bug with the app, please provide the following information when submitting a bug report.
+> - What you were attempting to do (add submission, update, etc.)
+> - Device used (PC, mobile device)
+> - Screenshots
+> - Steps to recreate the error
