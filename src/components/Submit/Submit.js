@@ -26,7 +26,7 @@ const Submit = (props) => {
 		console.log(gallery);
 		console.log(headers);
 		props.setUser({ ...props.user, owner: props.user.id });
-		setGallery({...gallery, owner: props.user.id})
+		setGallery({ ...gallery, owner: props.user.id });
 		axios({
 			url: url,
 			method: 'POST',
