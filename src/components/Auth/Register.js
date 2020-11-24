@@ -76,10 +76,10 @@ const Register = () => {
 						value={joinState.password2}
 					/>
 				</div>
-				{passwordError && <h2>Passwords must match!</h2>}
 				<button type='submit' className='pretty-button'>
 					Sign up
 				</button>
+				{passwordError && <h3>Passwords must match.</h3>}
 			</form>
 		</div>
 	);
